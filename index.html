@@ -16,6 +16,7 @@
         font-size: 5rem;
         background: url("assets/img/flames.gif") no-repeat center/cover;
         overflow: hidden;
+        font-family: Georgia, 'Times New Roman', Times, serif;
       }
       .grid-container {
         display: grid;
@@ -50,41 +51,17 @@
       function randomNumber(min, max){
         return (Math.random() * (max-min)) + min;
       }
-
-      //define divs variable
-      let divs = document.querySelectorAll(".grid-container div");
-
-      function randomize() {
-
-      //apply only to each of the div tags
-      divs.forEach(function (div) {
-        let scale = randomNumber(0.5, 1.2);
-        let translateX = randomNumber(0, 50);
-        let translateY = randomNumber(0, 20);
-        let rotate = randomNumber(0,360);
-
-        //half of the time do this...
-        if (Math.random() > 0.5) {
-          scale = 1; //doesn't affect scale
-          let translateX = randomNumber(0, 80);
-          let translateY = randomNumber(0, 80);
+      fade = 0;
+      document.addEventListener("click", function () {
+        let min = 0;
+        let max = 0.2;
+        fade += Math.random() * (max-min) + min;
+        if (fade > 1) {
+          fade = 0;
         }
-        div.style.transform = `scale(${scale}) translate(${translateX}%, ${translateY}%) rotate(${rotate}deg)`;
+        document.body.style.opacity = 1 - fade;
+        //document.getElementsByClassName("last").style.opacity = 1 - fade;
       });
-    }
-
-    document.addEventListener("click", randomize);
-      //let rotation = 0;
-      //fade = 0;
-      //document.addEventListener("click", function () {
-      //  let min = 0;
-      //  let max = 0.2;
-      //  fade += Math.random() * (max-min) + min;
-      //  if (fade > 1) {
-      //    fade = 0;
-      //  }
-      //  document.body.style.opacity = 1 - fade;
-      //});
     </script>
   </body>
 </html>
