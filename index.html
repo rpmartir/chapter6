@@ -48,19 +48,21 @@
       <div class="last">fade</div>
     </div>
     <script>
-      function randomNumber(min, max){
-        return (Math.random() * (max-min)) + min;
+      function randomNumber(min, max) {
+        return (Math.random() * (max - min)) + min;
       }
-      fade = 0;
+      let fade = 0;
       document.addEventListener("click", function () {
         let min = 0;
         let max = 0.2;
-        fade += Math.random() * (max-min) + min;
+        fade += Math.random() * (max - min) + min;
         if (fade > 1) {
           fade = 0;
         }
-        document.body.style.opacity = 1 - fade;
-        //document.getElementsByClassName("last").style.opacity = 1 - fade;
+        const lastElements = document.querySelectorAll(".last");
+        lastElements.forEach(element => {
+          element.style.opacity = 1 - fade;
+        });
       });
     </script>
   </body>
